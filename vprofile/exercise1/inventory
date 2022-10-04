@@ -1,0 +1,28 @@
+web01 ansible_host=44.211.63.6 
+
+web02 ansible_host=34.239.119.255 
+
+db01 ansible_host=3.89.26.218
+
+[websrvgrp]
+web01
+web02 
+
+[dbsrvgrp]
+db01
+
+[dc_virginia:children]
+websrvgrp
+dbsrvgrp
+
+[dc_virginia:vars]
+ansible_user=ec2-user
+ansible_connection=ssh
+ansible_ssh_private_key_file=/home/sushantdevops/Downloads/vprofile-key.pem 
+
+# Commnd to ping  hosts
+
+# ansible -i <location_of_inventory_file> -m ping <provide_hostname_or_group_name>
+
+# Command to ping all hosts all at once
+# ansible -i <location_of_the_inventory> -m ping all
