@@ -1,0 +1,27 @@
+---
+- name: Setup httpd and firewall port 
+  hosts: websrvgrp
+  become: true 
+
+  tasks:
+    - name: Install apache packages 
+      yum:
+        name: 
+          - httpd
+          - firewalld
+        state: present
+
+    - name: Start httpd 
+      service:
+        name: httpd 
+        state: started 
+
+    - name: Start firewalld
+      service:
+        name: firewalld
+        state: started
+
+    - name: Restart firewalld service to load firewall changes 
+      service:
+        name: firewalld
+        state: reloaded

@@ -1,0 +1,9 @@
+- name: Change file permissions
+  hosts: all
+  become: true
+
+  tasks:
+    - name: File Permissions 
+      file:
+        path: /home/ec2-user/hello.txt
+        mode: a+w

@@ -1,8 +1,8 @@
-web01 ansible_host=44.211.63.6 
+web01 ansible_host=18.212.169.179
 
-web02 ansible_host=34.239.119.255 
+web02 ansible_host=54.167.237.239
 
-db01 ansible_host=3.89.26.218
+db01 ansible_host=54.172.62.65
 
 [websrvgrp]
 web01

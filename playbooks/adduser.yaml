@@ -1,0 +1,11 @@
+---
+- name: Playbook for creating users 
+  hosts: websrvgrp
+  become: true
+
+  tasks:
+    - name: Create Users 
+      user:
+        name: george
+        home: /home/george 
+        shell: /bin/bash

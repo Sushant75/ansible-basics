@@ -1,0 +1,12 @@
+---
+- name: My first playbook
+  hosts: localhost
+
+  tasks:
+    - name: test connectivity 
+      ping:
+
+
+################ Command to run a playbook #######################
+
+# ansible-playbook <playbook-name>   # You don't need to provide the location of the inventory file if you are running tasks on localhost

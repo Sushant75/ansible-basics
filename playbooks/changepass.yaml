@@ -1,0 +1,22 @@
+---
+- name: Add or Update user password
+  hosts: websrvgrp
+  become: true 
+
+  tasks:
+    - name: Change "george" password 
+      user:
+        name: george 
+        update_password: always
+        password: "{{ mypassword | password_hash('sha512') }}"
+
+
+# We need to specify the --extra-vars flag with ansible playbook command just ansible doesn't take password in plain format
+
+# The command will be like
+
+# ansible-playbook -i <location_of_inventory> <filename> --extra-vars <variable_name>=<your-password>
+
+# Sample command
+
+# ansible-playbook -i /home/sushantdevops/Projects/ansible-basics/vprofile/exercise1/inventory changepass.yaml --extra-vars mypassword=alpha123

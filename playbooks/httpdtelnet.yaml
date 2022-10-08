@@ -1,0 +1,29 @@
+---
+- name: httpd and telnet 
+  hosts: websrvgrp
+  become: true 
+
+  tasks:
+    - name: Install httpd 
+      yum:
+        name: httpd 
+        state: present
+
+    - name: Start httpd 
+      service:
+        name: httpd 
+        state: started 
+
+    - name: Install telnet 
+      yum:
+        name: telnet 
+        state: present
+
+
+# Start a playbook at a specific task 
+
+# ansible-playbook -i <location_of_host_file> <playbook_name> --start-at-task <task-name>
+
+# Sample 
+
+# ansible-playbook -i /home/sushantdevops/Projects/ansible-basics/vprofile/exercise1/inventory httpdtelnet.yaml --start-at-task "Install telnet"

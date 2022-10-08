@@ -1,0 +1,13 @@
+---
+- name: Copy file from local to remote clients
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Copying file 
+      copy:
+        src: /home/sushantdevops/param.yaml
+        dest: /tmp
+        owner: ec2-user
+        group: ec2-user
+        mode: 0644
