@@ -1,0 +1,42 @@
+---
+- name: Setup Web Server
+  hosts: websrvgrp
+  become: true
+  tasks:
+    - name: Install Apache HTTPD
+      yum:
+        name: httpd 
+        state: present
+    - name: State & Enable HTTPD
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: Deploy web file
+      copy:
+        src: /home/sushantdevops/Projects/ansible-basics/vprofile/exercise3/index.html
+        dest: /var/www/html/index.html 
+
+- name: Setup DB Server
+  hosts: dbsrvgrp
+  become: true
+  tasks:
+    - name: Install MySql Server 
+      yum:
+        name: mariadb-server 
+        state: present
+    - name: State & Enable mariadb server
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+# Use this command to check the syntax of the playbook
+
+# ansible-playbook <name_of_the_playbook> --syntax-check
+
+# To dry run your ansible playbook use '-C' at the end:
+
+# Sample
+
+# ansible-playbook -i inventory web_db.yaml -C
